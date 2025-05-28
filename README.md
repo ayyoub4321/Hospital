@@ -103,28 +103,27 @@ src/
 ##  Captures d'Écran
 
 ###  Page de Connexion
-*[Placer ici une capture d'écran de la page de login]*
 
 ![Page de Login](img/login.png)
 
 ###  Liste des Patients avec Pagination et search
-*[Placer ici une capture d'écran de la liste des patients]*
+
 
 ![Liste des Patients](img/search.png)
 
 
 
 ###  Formulaire d'Ajout de Patient
-*[Placer ici une capture d'écran du formulaire d'ajout]*
+
 
 ![Formulaire d'Ajout](img/add.png)
 
 ### Formulaire de Modification
-*[Placer ici une capture d'écran du formulaire de modification]*
+
 
 ![Formulaire de Modification](img/edit.png)
 ### 🛡️ Contrôle d'Accès Admin
-*[Placer ici une capture d'écran montrant les restrictions d'accès]*
+
 
 ![Contrôle d'Accès](img/admin.png)
 
