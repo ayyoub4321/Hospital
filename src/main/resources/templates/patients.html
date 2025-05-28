@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="template1"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des Patients</title>
+    <link rel="stylesheet" href="webjars/bootstrap/5.3.2/css/bootstrap.min.css">
+
+</head>
+<body>
+<div layout:fragment="content1">
+<div class="p-3 m-2">
+    <div class="card">
+        <div class="card-header">List Patients</div>
+        <div class="card-body">
+            <form method="get" th:accept="@{/index}">
+                <label>Keyword</label>
+                <input type="text" name="key" th:value="${key}">
+                <button class="btn btn-outline-info">search</button>
+            </form>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>prenom</th>
+                    <th>Date de naissance</th>
+                    <th>Score</th>
+                    <th>Malade</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="p : ${Listpatients}">
+                    <td th:text="${p.id}"></td>
+                    <td th:text="${p.firstName}"></td>
+                    <td th:text="${p.lastName}"></td>
+                    <td th:text="${p.dateOfBirth}"> </td>
+                    <td th:text="${p.score}"></td>
+                    <td th:text="${p.malade}"></td>
+                    <td><a  onclick="return confirm('Est vous sur?')" class="btn btn-danger" th:href="@{deletePatient(id=${p.id},page=${pageCourent},key=${key})}">Delet</a></td>
+                    <td><a  onclick="return confirm('Est vous sur?')" class="btn btn-danger" th:href="@{edit(id=${p.id},key=${key},page=${pageCourent})}">Edit</a></td>
+                </tr>
+                </tbody>
+
+            </table>
+            <a th:class="${satates.index==pageCourent?'btn btn-info m-1':'btn btn-outline-info m-1'}"
+                th:each="page,satates:${pages}"
+                th:href="@{index(page=${satates.index},key=${key})}"
+                th:text="${satates.index}"></a>
+
+        </div>
+
+    </div>
+
+</div>
+</div>
+
+
+
+</body>
+</html>
