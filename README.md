@@ -1,5 +1,11 @@
 # Hospital App - Application de Gestion des Patients
 
+## Auteurs
+
+- **Nom :** Ayyoub  
+- **Prénom :** Ait mansour 
+- **Filière :**SDIA
+- **TP :** TP3
 ##  Description du Projet
 
 **Hospital App** est une application web développée avec **Spring Boot**, utilisant **Spring MVC**, **Thymeleaf**, **Spring Data JPA** et **Spring Security** pour la gestion complète des patients dans un environnement hospitalier.
