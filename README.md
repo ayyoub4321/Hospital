@@ -110,21 +110,21 @@ src/
 ###  Liste des Patients avec Pagination et search
 *[Placer ici une capture d'écran de la liste des patients]*
 
-![Liste des Patients](images/search.png)
+![Liste des Patients](img/search.png)
 
 
 
 ###  Formulaire d'Ajout de Patient
 *[Placer ici une capture d'écran du formulaire d'ajout]*
 
-![Formulaire d'Ajout](images/add.png)
+![Formulaire d'Ajout](img/add.png)
 
 ### Formulaire de Modification
 *[Placer ici une capture d'écran du formulaire de modification]*
 
-![Formulaire de Modification](images/edit.png)
+![Formulaire de Modification](img/edit.png)
 ### 🛡️ Contrôle d'Accès Admin
 *[Placer ici une capture d'écran montrant les restrictions d'accès]*
 
-![Contrôle d'Accès](images/admin.png)
+![Contrôle d'Accès](img/admin.png)
 
