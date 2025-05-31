@@ -22,7 +22,7 @@ public class PatientController {
     @Autowired
     private PatientRepository patientRepository;
 
-    @GetMapping("/index")
+    @GetMapping("/user/index")
     public String index(Model model,
                         @RequestParam(name = "page",defaultValue = "0") int page,
                         @RequestParam(name="size",defaultValue = "5") int size,
@@ -35,13 +35,13 @@ public class PatientController {
 
         return "patients";
     }
-    @GetMapping("deletePatient")
+    @GetMapping("/admin/deletePatient")
     public String deletePatient( @RequestParam(name = "id") Long id,@RequestParam(name = "key") String key,@RequestParam(name = "page") int page){
         patientRepository.deleteById(id);
-        return "redirect:/index?key="+key+"&page="+page;
+        return "redirect:/user/index?key="+key+"&page="+page;
 
     }
-    @GetMapping("/edit")
+    @GetMapping("/admin/edit")
     public String edit(Model model,@RequestParam(name="id") Long id,@RequestParam(name = "key",defaultValue = "") String key,@RequestParam(name = "page",defaultValue = "0")int page){
         Optional<Patient> p= patientRepository.findById(id);
         model.addAttribute("patient",p);
@@ -51,12 +51,12 @@ public class PatientController {
         return "editPatient";
 
     }
-    @GetMapping("/formPatients")
+    @GetMapping("/admin/formPatients")
     public String formPatient(Model model){
         model.addAttribute("patient", new Patient());
         return "formPatient";
     }
-    @PostMapping("/savePatient")
+    @PostMapping("/admin/savePatient")
 
     public String SavePatient(Model model, @Valid @ModelAttribute("patient") Patient patient, BindingResult bindingResult,
                               @RequestParam(name = "key",defaultValue = "") String Key,
@@ -64,14 +64,18 @@ public class PatientController {
         if(bindingResult.hasErrors()){ return "formPatient"; }
         System.out.println("pation ===> "+patient);
         patientRepository.save(patient);
-        return "redirect:/index?key="+Key+"&page="+page;
+        return "redirect:/user/index?key="+Key+"&page="+page;
     }
     @GetMapping("/")
     public String home(){
-        return "redirect:/index";
+        return "redirect:/user/index";
     }
     @GetMapping("/login")
     public String login(){
         return "login";
+    }
+    @GetMapping("/NotAuthorized")
+    public String notAuthorized(){
+        return "notAuthorized";
     }
 }

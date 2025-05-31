@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Liste des Patients</title>
-    <link rel="stylesheet" href="webjars/bootstrap/5.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/webjars/bootstrap/5.3.2/css/bootstrap.min.css">
 
 </head>
 <body>
@@ -39,8 +39,8 @@
                     <td th:text="${p.dateOfBirth}"> </td>
                     <td th:text="${p.score}"></td>
                     <td th:text="${p.malade}"></td>
-                    <td><a  onclick="return confirm('Est vous sur?')" class="btn btn-danger" th:href="@{deletePatient(id=${p.id},page=${pageCourent},key=${key})}">Delet</a></td>
-                    <td><a  onclick="return confirm('Est vous sur?')" class="btn btn-danger" th:href="@{edit(id=${p.id},key=${key},page=${pageCourent})}">Edit</a></td>
+                    <td th:if="${#authorization.expression('hasRole(''ADMIN'')')}"><a  onclick="return confirm('Est vous sur?')" class="btn btn-danger" th:href="@{/admin/deletePatient(id=${p.id},page=${pageCourent},key=${key})}">Delet</a></td>
+                    <td th:if="${#authorization.expression('hasRole(''ADMIN'')')}"><a  onclick="return confirm('Est vous sur?')" class="btn btn-danger" th:href="@{/admin/edit(id=${p.id},key=${key},page=${pageCourent})}">Edit</a></td>
                 </tr>
                 </tbody>
 

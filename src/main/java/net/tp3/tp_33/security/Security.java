@@ -25,20 +25,27 @@ public class Security {
                 User.withUsername("admin").password(passwordEncoder.encode("1234")).roles("USER","ADMIN").build()
 
 
-                );
+        );
     }
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
                 .authorizeHttpRequests(auth -> auth
+
                         .requestMatchers("/login", "/webjars/**").permitAll()
+                        .requestMatchers("user/**").hasRole("USER")
+                        .requestMatchers("admin/**").hasRole("ADMIN")
+
+
                         .anyRequest().authenticated()
                 )
+                .exceptionHandling(ex->ex.accessDeniedPage("/NotAuthorized"))
+
                 .formLogin(form -> form
-                        .loginPage("/login")
-                        .defaultSuccessUrl("/index", true)
-                        .permitAll()
+                        .loginPage("/login").permitAll()
+                        .defaultSuccessUrl("/user/index", true)
+
                 )
                 .build();
     }
